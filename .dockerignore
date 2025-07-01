@@ -28,17 +28,14 @@ coverage
 .DS_Store
 .fleet
 .idea
+misc
 
 # Env files
 .env*
 
-# Tauri files
-native
-
-# Prisma files
-prisma/*.db
-prisma/*.db-*
-prisma/generated
+# Static files
+static/**/*.*
+!static/**/*.gitkeep
 
 # Docker files
 .dockerignore

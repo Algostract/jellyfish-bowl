@@ -1,12 +1,15 @@
 import type { Client } from '@notionhq/client'
 
-export default async function <T>(notion: Client, dbId: string) {
+import type { QueryDatabaseParameters } from '@notionhq/client/build/src/api-endpoints'
+
+export default async function <T>(notion: Client, dbId: string, filter?: QueryDatabaseParameters['filter']) {
   const content: T[] = []
   let cursor = undefined
 
   do {
     const response = await notion.databases.query({
       database_id: dbId,
+      filter: filter,
       page_size: 100,
       start_cursor: cursor,
     })

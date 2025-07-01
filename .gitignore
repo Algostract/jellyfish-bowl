@@ -17,13 +17,12 @@ logs
 .DS_Store
 .fleet
 .idea
+misc
 
-# Local env files
+# Env files
 .env
 .env.*
 !.env.example
 
-# Prisma files
-prisma/*.db
-prisma/*.db-*
-prisma/generated
+# Static files
+static

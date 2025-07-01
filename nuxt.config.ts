@@ -24,6 +24,12 @@ export default defineNuxtConfig({
   ],
   nitro: {
     compressPublicAssets: true,
+    storage: {
+      fs: {
+        driver: 'fs',
+        base: './static',
+      },
+    },
     experimental: {
       tasks: true,
     },
@@ -55,7 +61,6 @@ export default defineNuxtConfig({
     },
     private: {
       rootDir: '',
-      notionApiKey: '',
       notionDbId: '',
       vapidKey: '',
       mapApiKey: '',

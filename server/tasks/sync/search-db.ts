@@ -1,6 +1,10 @@
-import { Client } from '@notionhq/client'
-
-let notion: Client
+export interface TypesenseModel extends Omit<Model, 'id' | 'url' | 'isFavorite' | 'photo'> {
+  slug: string
+  'photo.title': string
+  'photo.image'?: string
+  'photo.description': string
+  'photo.aspectRatio': number
+}
 
 export default defineTask({
   meta: {
@@ -11,13 +15,7 @@ export default defineTask({
     console.log('Running Task sync:search-db...')
 
     const config = useRuntimeConfig()
-    if (!config.private.notionApiKey) {
-      throw new Error('Notion API Key Not Found')
-    }
-
     const notionDbId = config.private.notionDbId as unknown as NotionDB
-
-    notion = notion ?? new Client({ auth: config.private.notionApiKey })
 
     const data = await notion.databases.query({
       database_id: notionDbId.model,
@@ -25,12 +23,15 @@ export default defineTask({
     const models = data.results as unknown as NotionModel[]
 
     const documents = models
-      .map(({ id, properties }): Omit<Model, 'image' | 'url' | 'isFavorite'> | null => {
+      .map(({ cover, properties }): TypesenseModel | null => {
         const title = notionTextStringify(properties.Name.title)
         return {
-          id,
+          slug: properties.Slug.formula.string,
           name: title,
-          // image: (cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined) ?? (cover?.type === 'file' ? cover.file.url : undefined),
+          'photo.title': title,
+          'photo.image': cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
+          'photo.description': '',
+          'photo.aspectRatio': 16 / 9,
           rating: 0,
           reviewCount: 0,
           coordinate: [88.4306945 + Math.random() / 10, 22.409649 + Math.random() / 10],
@@ -42,7 +43,7 @@ export default defineTask({
     // Check if collection exists
     let collectionExists = false
     try {
-      await typesense.collections('models').retrieve()
+      await typesense.collections('model').retrieve()
       collectionExists = true
     } catch {
       collectionExists = false
@@ -51,10 +52,14 @@ export default defineTask({
     // Create collection if it doesn't exist
     if (!collectionExists) {
       await typesense.collections().create({
-        name: 'models',
+        name: 'model',
         fields: [
-          { name: 'id', type: 'string' },
+          { name: 'slug', type: 'string' },
           { name: 'name', type: 'string', sort: true },
+          { name: 'photo.title', type: 'string' },
+          { name: 'photo.image', type: 'string' },
+          { name: 'photo.description', type: 'string' },
+          { name: 'photo.aspectRatio', type: 'float' },
           { name: 'rating', type: 'float' },
           { name: 'reviewCount', type: 'int32' },
           { name: 'isFeatured', type: 'bool', optional: true },
@@ -64,8 +69,12 @@ export default defineTask({
       })
     }
 
-    // Upsert documents (update if exists, create if not)
-    await typesense.collections('models').documents().import(documents, { action: 'upsert' })
+    try {
+      // Upsert documents (update if exists, create if not)
+      await typesense.collections('model').documents().import(documents, { action: 'upsert' })
+    } catch (error) {
+      console.error('Upsert error', error.importResults)
+    }
 
     return { result: 'success' }
   },

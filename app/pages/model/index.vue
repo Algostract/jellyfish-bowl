@@ -26,13 +26,13 @@ const zoom = 16
       <button @click="changeViewMode()">Toggle View</button>
     </div>
     <section v-show="viewMode === 'list'" class="target relative col-span-full col-start-1 block h-full items-center justify-items-center overflow-y-auto p-2 md:col-start-2">
-      <div class="mx-auto grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-8">
+      <div class="mx-auto grid w-full grid-cols-2 gap-2 md:grid-cols-4 md:gap-8">
         <CardModel
-          v-for="{ id, name, image, rating, reviewCount, coordinate, isFeatured, url } in models"
+          v-for="{ id, name, photo, rating, reviewCount, coordinate, isFeatured, url } in models"
           :id="id"
           :key="id"
           :name="name"
-          :image="image"
+          :photo="photo"
           :rating="rating"
           :review-count="reviewCount"
           :coordinate="coordinate"
@@ -48,9 +48,9 @@ const zoom = 16
           <!-- <MglFullscreenControl /> -->
           <!-- <MglScaleControl /> -->
           <MglGeolocateControl />
-          <MglMarker v-for="{ id, image, name, coordinate, url } in models" :key="id" :coordinates="coordinate">
+          <MglMarker v-for="{ id, photo, name, coordinate, url } in models" :key="id" :coordinates="coordinate">
             <template #marker>
-              <MarkerModel :id="id" :image="image" :name="name" :url="url" />
+              <MarkerModel :id="id" :photo="photo" :name="name" :url="url" />
             </template>
           </MglMarker>
         </MglMap>

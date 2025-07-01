@@ -68,13 +68,6 @@ docker node ls
 
 ```bash
 docker volume create \
-  --name gold-fish-bowl_static \
-  --driver local \
-  --opt type=none \
-  --opt device=~/Algostract/gold-fish-bowl/static \
-  --opt o=bind
-
-docker volume create \
   --name gold-fish-bowl_data \
   --driver local \
   --opt type=none \

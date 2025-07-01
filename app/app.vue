@@ -1,7 +1,9 @@
 <script setup lang="ts">
-const title = `NuxTemplate`
-const description = `Nuxt Template Description`
+const title = `Gold Fish Bowl`
+const description = `Locality‑focused, talent marketplace app`
+
 const {
+  app: { buildTime },
   public: { siteUrl },
 } = useRuntimeConfig()
 
@@ -25,19 +27,12 @@ useSeoMeta({
   fbAppId: 966242223397117,
   twitterCard: 'summary_large_image',
   colorScheme: 'light dark',
-  viewport: {
-    initialScale: 1.0,
-    maximumScale: 1.0,
-    minimumScale: 1.0,
-    userScalable: 'no',
-    viewportFit: 'cover',
-  },
 })
 
 useSchemaOrg([
   defineWebPage({
-    datePublished: new Date(2024, 1, 1).toISOString(),
-    dateModified: new Date(2024, 1, 1).toISOString(),
+    datePublished: new Date(2025, 4, 15).toISOString(),
+    dateModified: buildTime,
     author: 'Shirsendu Bairagi',
   }),
   defineWebSite({

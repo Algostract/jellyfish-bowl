@@ -14,8 +14,7 @@ if (!model.value) {
 <template>
   <main v-if="model" class="relative h-screen w-screen">
     <NuxtImg
-      :provider="getImgProvider(model.image)"
-      :src="model.image"
+      :src="model.photo.image"
       :modifiers="{
         setfill: '000000',
         crop: 'face/300px300p/-/crop/1:1/50p,45p',
@@ -24,6 +23,6 @@ if (!model.value) {
       height="100vh"
       class="absolute inset-0 h-full w-full object-cover"
       alt="Model hero shot" />
-    <CompositionOverlay />
+    <!-- <CompositionOverlay /> -->
   </main>
 </template>
