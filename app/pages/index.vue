@@ -27,7 +27,7 @@ useSchemaOrg([
 </script>
 
 <template>
-  <main class="flex h-screen w-screen items-center justify-center">
-    <NuxtLink to="/model" class="rounded-full bg-light-500 px-5 py-3 text-black"> Let's get started </NuxtLink>
+  <main class="relative isolate mx-auto flex min-h-screen max-w-[90rem] flex-col items-center justify-center gap-4 overflow-hidden px-2 md:mb-8 md:px-4">
+    <NuxtLink to="/model" class="w-fit rounded-full bg-light-500 px-5 py-3 text-black"> Let's get started </NuxtLink>
   </main>
 </template>

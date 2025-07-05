@@ -15,7 +15,7 @@ export default defineEventHandler<Promise<Model[]>>(
 
       return (
         response.hits?.map<Model>(({ document }) => ({
-          id: document.slug,
+          id: document.id,
           name: document.name,
           photo: {
             title: document['photo.title'],
@@ -27,7 +27,7 @@ export default defineEventHandler<Promise<Model[]>>(
           reviewCount: document.reviewCount,
           coordinate: document.coordinate,
           isFeatured: document.isFeatured,
-          url: `/model/${document.slug}`,
+          url: `/model/${document.id}`,
         })) ?? []
       )
     } catch (error) {

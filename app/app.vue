@@ -47,11 +47,11 @@ useSchemaOrg([
   <NuxtRouteAnnouncer />
   <NuxtPwaManifest />
   <NuxtPwaAssets />
-  <!-- <NuxtLoadingIndicator /> -->
+  <NuxtLoadingIndicator color="#0593FA" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
-  <AppInstallPrompt />
+  <LazyAppInstallPrompt hydrate-on-idle />
 </template>
 
 <style>

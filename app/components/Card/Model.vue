@@ -11,12 +11,12 @@ const props = withDefaults(defineProps<ExtendedModel>(), {
 })
 
 const isFavorite = ref(props.isFavorite)
-const activePhotoName = useState<string | null>()
+const activeModel = useState<string | null>()
 </script>
 
 <template>
   <div class="relative isolate grid aspect-[170/227] grid-cols-1 grid-rows-1">
-    <NuxtLink :to="url" class="col-span-full col-start-1 row-span-full row-start-1 size-full overflow-clip rounded-md bg-light-500 dark:bg-dark-500" @click="activePhotoName = photo.title">
+    <NuxtLink :to="url" class="col-span-full col-start-1 row-span-full row-start-1 size-full overflow-clip rounded-md bg-light-500 dark:bg-dark-500" @click="activeModel = name">
       <NuxtImg
         :src="photo.image"
         :alt="photo.description"
@@ -26,7 +26,7 @@ const activePhotoName = useState<string | null>()
         loading="lazy"
         :placeholder="[120, Math.round(120 / (3 / 4)), 'lightest', 25]"
         class="w-full rounded-sm bg-light-600 object-cover dark:bg-dark-500"
-        :class="{ active: activePhotoName === photo.title }" />
+        :class="{ active: activeModel === name }" />
       />
     </NuxtLink>
     <div class="absolute bottom-2 left-2 z-10 flex items-center justify-center gap-1 rounded-full bg-light-500 fill-black p-1 pr-2 text-black">
@@ -44,8 +44,12 @@ const activePhotoName = useState<string | null>()
   </div>
 </template>
 
-<style lang="css">
+<style lang="css" scoped>
 :root {
   @apply fill-primary-400;
+}
+
+img.active {
+  view-transition-name: selected-model;
 }
 </style>

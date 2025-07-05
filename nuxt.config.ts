@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  experimental: {
+    viewTransition: true,
+  },
   devtools: { enabled: true },
   modules: [
     '@nuxt/eslint',

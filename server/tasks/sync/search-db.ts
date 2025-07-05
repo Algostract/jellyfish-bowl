@@ -1,5 +1,4 @@
-export interface TypesenseModel extends Omit<Model, 'id' | 'url' | 'isFavorite' | 'photo'> {
-  slug: string
+export interface TypesenseModel extends Omit<Model, 'url' | 'isFavorite' | 'photo'> {
   'photo.title': string
   'photo.image'?: string
   'photo.description': string
@@ -26,7 +25,7 @@ export default defineTask({
       .map(({ cover, properties }): TypesenseModel | null => {
         const title = notionTextStringify(properties.Name.title)
         return {
-          slug: properties.Slug.formula.string,
+          id: properties.Slug.formula.string,
           name: title,
           'photo.title': title,
           'photo.image': cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
@@ -54,7 +53,7 @@ export default defineTask({
       await typesense.collections().create({
         name: 'model',
         fields: [
-          { name: 'slug', type: 'string' },
+          { name: 'id', type: 'string' },
           { name: 'name', type: 'string', sort: true },
           { name: 'photo.title', type: 'string' },
           { name: 'photo.image', type: 'string' },

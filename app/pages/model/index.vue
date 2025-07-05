@@ -19,7 +19,7 @@ const zoom = 16
 </script>
 
 <template>
-  <main class="relative grid h-screen w-screen grid-cols-6 grid-rows-[min-content_1fr] overflow-hidden">
+  <main class="relative isolate grid h-screen w-screen grid-cols-6 grid-rows-[min-content_1fr] overflow-hidden">
     <section class="hidden md:col-start-1 md:row-span-full md:block">NavBar</section>
     <div class="z-10 col-span-full col-start-1 row-start-1 m-4 flex justify-between md:col-start-2 md:m-8">
       <SearchBar v-model="searchParams" placeholder="Search" class="w-full" />
