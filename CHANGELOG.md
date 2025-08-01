@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.0.6
+
+[compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- Add home page, add logo ([11b9f7e](https://github.com/Algostract/jellyfish-bowl/commit/11b9f7e))
+
+### 🩹 Fixes
+
+- Update environment variables and clean up Dockerfile and package.json ([16cd899](https://github.com/Algostract/jellyfish-bowl/commit/16cd899))
+
+### 💅 Refactors
+
+- Rename project from "red-cat-muse" to "gold-fish-bowl" and update related configurations ([09cb1f7](https://github.com/Algostract/jellyfish-bowl/commit/09cb1f7))
+- Add image upload scoped model ([9ce2cc6](https://github.com/Algostract/jellyfish-bowl/commit/9ce2cc6))
+- Update component structure and improve image handling ([cc526ec](https://github.com/Algostract/jellyfish-bowl/commit/cc526ec))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.5
 
 [compare changes](https://github.com/algostract/jellyfish-bowl/compare/v0.0.4...v0.0.5)
