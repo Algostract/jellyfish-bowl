@@ -18,7 +18,7 @@
   "packageManager": "bun@1.2.19",
   "scripts": {
     "prepare": "husky || true",
-    "postinstall": "nuxt prepare && prisma generate",
+    "postinstall": "nuxt prepare",
     "dev": "nuxt dev",
     "detect": "gitleaks git --verbose",
     "lint": "eslint . --fix",
