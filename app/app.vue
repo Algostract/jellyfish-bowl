@@ -4,7 +4,7 @@ const description = `Locality‑focused, talent marketplace app`
 
 const {
   app: { buildTime },
-  public: { siteUrl },
+  public: { siteUrl, vapidKey },
 } = useRuntimeConfig()
 
 useHead({
@@ -41,6 +41,36 @@ useSchemaOrg([
     description: description,
   }),
 ])
+
+const { $api } = useNuxtApp()
+const { isSupported, permissionGranted } = useWebNotification()
+
+async function getExistingSubscription() {
+  const registration = await navigator.serviceWorker.ready
+  let subscription = await registration.pushManager.getSubscription()
+
+  if (!subscription) {
+    subscription = await registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: vapidKey,
+    })
+  }
+
+  await $api('/api/notification/push/subscribe', {
+    method: 'POST',
+    body: subscription.toJSON(),
+  })
+
+  return subscription
+}
+
+onMounted(async () => {
+  if (isSupported.value && permissionGranted.value) await getExistingSubscription()
+})
+
+watch(permissionGranted, async (value) => {
+  if (value) await getExistingSubscription()
+})
 </script>
 
 <template>

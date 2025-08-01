@@ -25,7 +25,7 @@ const zoom = 16
       <SearchBar v-model="searchParams" placeholder="Search" class="w-full" />
       <button @click="changeViewMode()">Toggle View</button>
     </div>
-    <section v-show="viewMode === 'list'" class="target relative col-span-full col-start-1 block h-full items-center justify-items-center overflow-y-auto p-2 md:col-start-2">
+    <section v-show="viewMode === 'list'" class="target scrollbar-hidden relative col-span-full col-start-1 block h-full items-center justify-items-center overflow-y-auto p-2 md:col-start-2">
       <div class="mx-auto grid w-full grid-cols-2 gap-2 md:grid-cols-4 md:gap-8">
         <CardModel
           v-for="{ id, name, photo, rating, reviewCount, coordinate, isFeatured, url } in models"

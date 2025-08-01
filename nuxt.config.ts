@@ -1,3 +1,36 @@
+const host = process.env.TAURI_DEV_HOST || 'localhost'
+const port = process.env.PORT ? parseInt(process.env.PORT) : 3000
+
+const nativeConfig =
+  process.env.PLATFORM_ENV === 'native'
+    ? {
+        ssr: false,
+        devServer: { host },
+        ignore: ['**/src-tauri/**', '**/node_modules/**', '**/dist/**', '**/.git/**', '**/.nuxt/**', '**/.output/**'],
+        vite: {
+          clearScreen: false,
+          envPrefix: ['VITE_', 'TAURI_'],
+          server: {
+            strictPort: true,
+            port,
+            host: host || false,
+            hmr: host
+              ? {
+                  protocol: 'ws',
+                  host,
+                  port,
+                }
+              : undefined,
+          },
+        },
+        nitro: {
+          prerender: {
+            routes: [],
+          },
+        },
+      }
+    : {}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
@@ -41,13 +74,12 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { isr: 3600 },
+    '/': { ssr: true },
     '/_ipx/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/images/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/fonts/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     '/api/**': { cors: true },
   },
-
   runtimeConfig: {
     app: {
       version: '',
@@ -78,7 +110,7 @@ export default defineNuxtConfig({
   },
   icon: {
     componentName: 'NuxtIcon',
-    provider: 'server',
+    provider: 'none',
     mode: 'svg',
     customCollections: [
       {
@@ -86,6 +118,9 @@ export default defineNuxtConfig({
         dir: './app/assets/icons',
       },
     ],
+    clientBundle: {
+      scan: true,
+    },
   },
   image: {
     provider: 'uploadcare',
@@ -109,7 +144,7 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
   site: {
-    name: 'Gold Fish Bowl',
+    name: 'Jellyfish Bowl',
     url: process.env.NUXT_PUBLIC_SITE_URL,
   },
   sitemap: {
@@ -117,20 +152,21 @@ export default defineNuxtConfig({
     sources: ['/api/__sitemap__/urls'],
   },
   robots: {
-    disallow: ['/', '/_nuxt/'],
+    disallow: ['/_nuxt/'],
   },
   pwa: {
-    scope: '/',
-    base: '/',
+    strategies: 'generateSW',
     injectRegister: 'auto',
     registerType: 'autoUpdate',
+    includeManifestIcons: false,
     manifest: {
-      name: 'Gold Fish Bowl',
-      short_name: 'Gold Fish Bowl',
+      name: 'Jellyfish Bowl',
+      short_name: 'Jellyfish Bowl',
       description: 'Locality‑focused, talent marketplace app',
       theme_color: '#FFFFFF',
       background_color: '#FFFFFF',
-      orientation: 'portrait',
+      orientation: 'any',
+      display: 'fullscreen',
       icons: [
         {
           src: '/pwa/icon-48.png',
@@ -262,38 +298,14 @@ export default defineNuxtConfig({
         },
       ],
     },
-    workbox: {
-      globPatterns: ['**/*.{html,css,js,jpg,jpeg,png,svg,webp,ico,mp3,wav,ogg,mp4,webm,mov,m4a,aac}'],
-      runtimeCaching: [
-        {
-          urlPattern: /\.(?:html|js|css)$/,
-          handler: 'NetworkFirst',
-          options: {
-            cacheName: 'dynamic-assets',
-          },
-        },
-        {
-          urlPattern: /\.(?:png|jpg|jpeg|svg|webp|ico|mp3|wav|ogg|mp4|webm|mov|m4a|aac)$/,
-          handler: 'CacheFirst',
-          options: {
-            cacheName: 'static-assets',
-            expiration: { maxEntries: 100, maxAgeSeconds: 7 * 24 * 60 * 60 },
-          },
-        },
-      ],
-      navigateFallback: '/',
-      cleanupOutdatedCaches: true,
-      importScripts: ['/sw-push.js'],
-    },
-    client: {
-      installPrompt: true,
-      periodicSyncForUpdates: 3600,
+    injectManifest: {
+      globPatterns: ['**/*.{js,json,css,html,txt,svg,png,ico,webp,woff,woff2,ttf,eot,otf,wasm}'],
+      globIgnores: ['manifest**.webmanifest'],
     },
     devOptions: {
-      type: 'module',
       enabled: false,
-      suppressWarnings: false,
-      navigateFallback: undefined,
+      type: 'module',
     },
   },
+  ...nativeConfig,
 })

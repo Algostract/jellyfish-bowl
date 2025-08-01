@@ -3,7 +3,7 @@ FROM oven/bun:1-alpine AS builder
 WORKDIR /app
 
 COPY package.json bun.lock ./
-COPY nuxt.config.ts ./
+COPY nuxt.config.ts prisma ./
 
 ENV NITRO_PRESET=bun
 ENV NUXT_PUBLIC_SITE_URL=$SITE_URL

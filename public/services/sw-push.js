@@ -1,7 +1,7 @@
-self.addEventListener('push', (event) => {
+export function onPush(event) {
   if (!self.Notification || Notification.permission !== 'granted') return
 
-  let payload = {}
+  let payload
   try {
     payload = event.data.json()
   } catch {
@@ -15,10 +15,10 @@ self.addEventListener('push', (event) => {
   }
 
   event.waitUntil(self.registration.showNotification(payload.title, options))
-})
+}
 
-self.addEventListener('notificationclick', (event) => {
+export function onNotificationClick(event) {
   event.notification.close()
   const target = event.notification.data.url
-  event.waitUntil(clients.openWindow(target))
-})
+  event.waitUntil(self.clients.openWindow(target))
+}

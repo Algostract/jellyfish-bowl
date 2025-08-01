@@ -2,7 +2,7 @@
   <img src="./public/logo.png" lt="Logo" width="65" />
 <p>
 
-# Gold Fish Bowl
+# Jellyfish Bowl
 
 <p align="center">
   <a href="https://shirsendu-bairagi.betteruptime.com">
@@ -18,31 +18,20 @@
 - 🖼️ OG Tags
 - 🚀 PWA
 - ✋ Push Notification
-- 🤖 Automation (Email, Whatsapp)
+- 🌙 Light/Dark Mode
 - 🐋 Containerized
 - 🪄 CI/CD (Github Action)
 - 🎭 Authentication (OAuth 2.0)
 - ⚡️ API Route Caching
 - 📐 Analytics
 
-## Change Placeholder Value
+# Todo
 
-### In tailwind.config.ts change the following
+- [ ] Add Testing
 
-- fontFamily
-  - head
-  - body
-- colors
-  - light
-  - dark
-  - primary
-  - success
-  - warning
-  - alert
+## External Dependencies
 
-## Change the Icons and Screenshots
-
-dir public/pwa
+- gitleaks
 
 ## How to Deploy
 
@@ -68,28 +57,36 @@ docker node ls
 
 ```bash
 docker volume create \
-  --name gold-fish-bowl_data \
+  --name jellyfish-bowl_data \
   --driver local \
   --opt type=none \
-  --opt device=~/Algostract/gold-fish-bowl/.data \
+  --opt device=~/Algostract/jellyfish-bowl/.data \
   --opt o=bind
 ```
 
 5. Use Docker Stack to deploy multi-container application
 
 ```bash
-docker stack deploy --compose-file docker-compose.prod.yml gold-fish-bowl
+docker stack deploy --compose-file docker-compose.prod.yml jellyfish-bowl
 ```
 
 6. Scale service
 
 ```bash
-docker service scale gold-fish-bowl_app=2
+docker service scale jellyfish-bowl_app=2
 ```
 
 7. Verify
 
 ```bash
 docker service ls
-docker service ps gold-fish-bowl_app
+docker service ps jellyfish-bowl_app
 ```
+
+## License
+
+Published under the [GNU GPLv3](https://github.com/Algostract/jellyfish-bowl/blob/main/LICENSE) license.
+<br><br>
+<a href="https://github.com/Algostract/jellyfish-bowl/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=Algostract/jellyfish-bowl" />
+</a>

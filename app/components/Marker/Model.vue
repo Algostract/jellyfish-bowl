@@ -12,8 +12,8 @@ defineProps<Pick<Model, 'id' | 'photo' | 'name' | 'url'>>()
       width="64"
       height="64"
       loading="eager"
-      :modifiers="{ crop: 'face/1:1/50p,30p' }"
-      placeholder="/images/model-1.jpg"
+      :modifiers="{ crop: 'face/200px200p/-/crop/1:1/50p,30p/' }"
+      placeholder="/images/model-1.png"
       fit="cover"
       class="size-full rounded-full object-cover object-top" />
   </NuxtLink>

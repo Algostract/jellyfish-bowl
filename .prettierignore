@@ -27,7 +27,11 @@ misc
 .env*
 !.env.example
 
+# Tauri files
+src-tauri
+
 # Static files
 static/**/*.*
 !static/**/*.gitkeep
 !static/data/*
+
