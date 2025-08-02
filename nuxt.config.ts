@@ -160,10 +160,10 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
     includeManifestIcons: false,
     manifest: {
-      name: 'Jellyfish Bowl',
-      short_name: 'Jellyfish Bowl',
+      name: 'Gold Fish Bowl',
+      short_name: 'Gold Fish Bowl',
       description: 'Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot',
-      theme_color: '#FFFFFF',
+      theme_color: '#0593FA',
       background_color: '#FFFFFF',
       orientation: 'any',
       display: 'fullscreen',

@@ -1,5 +1,3 @@
-import type { TypesenseModel } from '~~/server/tasks/sync/search-db'
-
 export default defineEventHandler<Promise<Model[]>>(
   async (event) => {
     try {
@@ -12,6 +10,7 @@ export default defineEventHandler<Promise<Model[]>>(
         sort_by: searchParams.sortBy,
         per_page: searchParams.perPage,
       })
+      // filter by status
 
       return (
         response.hits?.map<Model>(({ document }) => ({

@@ -43,12 +43,12 @@ export default <Partial<Config>>{
       primary: {
         400: '#37A9FB',
         500: '#0593FA',
-        600: '#813232',
+        600: '#2598EB',
       },
       success: {
         400: '#89E774',
         500: '#4AD42B',
-        600: '#2598EB',
+        600: '#66BE52',
       },
       warning: {
         400: '#F0CD42',

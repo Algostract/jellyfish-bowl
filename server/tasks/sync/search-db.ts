@@ -16,24 +16,25 @@ export default defineTask({
     const config = useRuntimeConfig()
     const notionDbId = config.private.notionDbId as unknown as NotionDB
 
-    const data = await notion.databases.query({
-      database_id: notionDbId.model,
-    })
-    const models = data.results as unknown as NotionModel[]
+    const models = await notionQueryDb<NotionModel>(notion, notionDbId.model)
 
     const documents = models
       .map(({ cover, properties }): TypesenseModel | null => {
         const title = notionTextStringify(properties.Name.title)
+
+        if (!(properties.Latitude.number && properties.Longitude.number)) return null
+
         return {
           id: properties.Slug.formula.string,
           name: title,
+          status: properties.Status.status.name,
           'photo.title': title,
           'photo.image': cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
           'photo.description': '',
           'photo.aspectRatio': 16 / 9,
           rating: 0,
           reviewCount: 0,
-          coordinate: [88.4306945 + Math.random() / 10, 22.409649 + Math.random() / 10],
+          coordinate: [properties.Longitude.number, properties.Latitude.number],
           isFeatured: false,
         }
       })
@@ -55,6 +56,7 @@ export default defineTask({
         fields: [
           { name: 'id', type: 'string' },
           { name: 'name', type: 'string', sort: true },
+          { name: 'status', type: 'string', sort: true },
           { name: 'photo.title', type: 'string' },
           { name: 'photo.image', type: 'string' },
           { name: 'photo.description', type: 'string' },

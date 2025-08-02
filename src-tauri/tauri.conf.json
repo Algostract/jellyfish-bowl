@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Jellyfish Bowl",
+  "productName": "Gold Fish Bowl",
   "version": "../package.json",
   "identifier": "com.redcatpictures.bowl",
   "build": {
@@ -15,7 +15,7 @@
         "label": "main",
         "visible": true,
         "url": "/",
-        "title": "Jellyfish Bowl",
+        "title": "Gold Fish Bowl",
         "width": 1400,
         "height": 720,
         "resizable": true,

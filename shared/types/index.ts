@@ -86,11 +86,41 @@ export interface NotionModel {
         string: string
       }
     }
-    Name: { type: 'title'; title: { plain_text: string }[] }
-    Email: { type: 'email'; email: string }
-    Phone: { type: 'phone_number'; phone_number: string }
-    Instagram: { type: 'url'; url: string }
-    Project: { type: 'relation'; relation: string[]; has_more: false }
+    Name: {
+      type: 'title'
+      title: { plain_text: string }[]
+    }
+    Status: {
+      status: {
+        name: 'Unverified' | 'Verified' | 'Active' | 'Inactive'
+      }
+    }
+    Latitude: {
+      type: 'number'
+      number: number
+    }
+    Longitude: {
+      type: 'number'
+      number: number
+    }
+    Email: {
+      type: 'email'
+      email: string
+    }
+    Phone: {
+      type: 'phone_number'
+      phone_number: string
+    }
+
+    Instagram: {
+      type: 'url'
+      url: string
+    }
+    Project: {
+      type: 'relation'
+      relation: string[]
+      has_more: false
+    }
   }
   url: string
   public_url: null
@@ -138,9 +168,20 @@ export interface NotionAsset {
         name: 'Plan' | 'Draft' | 'Release' | 'Archive'
       }
     }
-    Project: { relation: string[]; has_more: false }
-    Model: { relation: string[]; has_more: false }
-    Featured: { number: number }
+    Project: {
+      type: 'relation'
+      relation: string[]
+      has_more: false
+    }
+    Model: {
+      type: 'relation'
+      relation: string[]
+      has_more: false
+    }
+    Featured: {
+      type: 'number'
+      number: number
+    }
     Resolution: {
       select: {
         name: Resolution
