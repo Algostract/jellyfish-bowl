@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.0.7
+
+[compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- Tauri added ([7283696](https://github.com/Algostract/jellyfish-bowl/commit/7283696))
+- Add coordinate, renamed project to "Gold Fish Bowl" ([4d2aa53](https://github.com/Algostract/jellyfish-bowl/commit/4d2aa53))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.6
 
 [compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.5...v0.0.6)
