@@ -13,17 +13,19 @@ export default defineEventHandler<Promise<Model>>(
       const notionDbId = config.private.notionDbId as unknown as NotionDB
 
       const models = await notionQueryDb<NotionModel>(notion, notionDbId.model, {
-        and: [
-          {
-            property: 'Slug',
-            formula: {
-              string: {
-                contains: slug,
+        filter: {
+          and: [
+            {
+              property: 'Slug',
+              formula: {
+                string: { contains: slug },
               },
             },
-          },
-        ],
+          ],
+        },
       })
+
+      console.log({ slug, models: models.length })
       const model = models[0]
       if (!models || !models.length || !model) {
         throw createError({ statusCode: 404, statusMessage: `model ${slug} not found` })
@@ -52,7 +54,7 @@ export default defineEventHandler<Promise<Model>>(
         },
         rating: 0,
         reviewCount: 0,
-        coordinate: [88.4306945 + Math.random() / 10, 22.409649 + Math.random() / 10],
+        coordinate: [model.properties.Longitude.number, model.properties.Latitude.number],
         isFeatured: false,
         url: `/model/${slug}`,
       } as Model
