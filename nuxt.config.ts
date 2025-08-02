@@ -144,7 +144,7 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
   site: {
-    name: 'Jellyfish Bowl',
+    name: 'Gold Fish Bowl',
     url: process.env.NUXT_PUBLIC_SITE_URL,
   },
   sitemap: {
@@ -162,7 +162,7 @@ export default defineNuxtConfig({
     manifest: {
       name: 'Jellyfish Bowl',
       short_name: 'Jellyfish Bowl',
-      description: 'Locality‑focused, talent marketplace app',
+      description: 'Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot',
       theme_color: '#FFFFFF',
       background_color: '#FFFFFF',
       orientation: 'any',

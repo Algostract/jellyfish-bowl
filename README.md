@@ -12,7 +12,7 @@
 
 ![Landing](public/previews/landing.webp)
 
-> Locality‑focused, talent marketplace app
+> Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot
 
 - 📦 SSR
 - 🖼️ OG Tags
@@ -58,6 +58,13 @@ docker node ls
 ```bash
 docker volume create \
   --name jellyfish-bowl_data \
+  --driver local \
+  --opt type=none \
+  --opt device=~/Algostract/jellyfish-bowl/.data \
+  --opt o=bind
+
+docker volume create \
+  --name jellyfish_bowl_search-data \
   --driver local \
   --opt type=none \
   --opt device=~/Algostract/jellyfish-bowl/.data \

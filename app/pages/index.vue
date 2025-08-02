@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const title = `Jellyfish Bowl`
-const description = `Locality‑focused, talent marketplace app`
+const description = `Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot`
 
 const {
   public: { siteUrl },
@@ -54,16 +54,7 @@ const { data: models } = await useFetch('/api/model', {
         </div>
         <NuxtLink to="/model" class="w-fit rounded-full bg-light-500 px-5 py-3 text-black"> Let's get started </NuxtLink>
       </div>
-      <NuxtImg
-        provider="ipx"
-        src="/images/model-1.png"
-        alt="Model"
-        :width="720"
-        :height="Math.round(720 / (9 / 16))"
-        fit="cover"
-        loading="lazy"
-        :placeholder="[120, Math.round(120 / (9 / 16)), 'lightest', 25]"
-        class="h-full w-full bg-[#D4E0EA] object-contain object-bottom" />
+      <NuxtImg provider="ipx" src="/images/model-1.png" alt="Model" :width="720" :height="Math.round(720 / (9 / 16))" fit="cover" class="h-full w-full bg-[#D4E0EA] object-contain object-bottom" />
     </section>
   </main>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const title = `Gold Fish Bowl`
-const description = `Locality‑focused, talent marketplace app`
+const title = `Jellyfish Bowl`
+const description = `Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot`
 
 const {
   app: { buildTime },

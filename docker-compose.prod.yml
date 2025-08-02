@@ -4,6 +4,8 @@ services:
     image: ghcr.io/algostract/jellyfish-bowl:latest
     env_file:
       - .env.prod
+    volumes:
+      - jellyfish_bowl_data:/app/.data
     ports:
       - 4310:3000
     networks:
@@ -20,7 +22,7 @@ services:
     env_file:
       - .env.prod
     volumes:
-      - search-data:/data
+      - jellyfish_bowl_search-data:/data
     networks:
       - front-tier
     deploy:
@@ -29,9 +31,12 @@ services:
         condition: on-failure
         max_attempts: 3
 
+volumes:
+  jellyfish_bowl_data:
+    external: true
+  jellyfish_bowl_search-data:
+    external: true
+
 networks:
   front-tier:
     driver: overlay
-
-volumes:
-  search-data:
