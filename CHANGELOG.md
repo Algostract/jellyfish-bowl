@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.8
+
+[compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.7...v0.0.8)
+
+### 🩹 Fixes
+
+- Improve query options handling in notionQueryDb ([f81f64d](https://github.com/Algostract/jellyfish-bowl/commit/f81f64d))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.7
 
 [compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.6...v0.0.7)
