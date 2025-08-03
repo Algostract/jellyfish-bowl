@@ -25,7 +25,6 @@ export default defineEventHandler<Promise<Model>>(
         },
       })
 
-      console.log({ slug, models: models.length })
       const model = models[0]
       if (!models || !models.length || !model) {
         throw createError({ statusCode: 404, statusMessage: `model ${slug} not found` })

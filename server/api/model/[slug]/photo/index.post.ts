@@ -46,33 +46,35 @@ export default defineEventHandler(async (event) => {
     // Upload to uploadcare cdn
     const { file: id } = await uploadcareUploadImage(imageFile)
 
-    console.log({ projectSlug, modelSlug })
+    console.log({ projectSlug, modelSlug, assetDb: notionDbId.asset })
 
-    const response = await notionQueryDb<NotionAsset>(notion, notionDbId.asset, {
-      and: [
-        {
-          property: 'Project',
-          relation: projectSlug
-            ? {
-                contains: projectSlug,
-              }
-            : {
-                is_empty: true,
+    /*     const response = await notionQueryDb<NotionAsset>(notion, notionDbId.asset, {
+          filter: {
+            and: [
+              {
+                property: 'Project',
+                relation: projectSlug
+                  ? {
+                    contains: projectSlug,
+                  }
+                  : {
+                    is_empty: true,
+                  },
               },
-        },
-        {
-          property: 'Model',
-          relation: {
-            contains: modelSlug,
-          },
-        },
-      ],
-    })
-    const lastIndex = response.reduce((max, page) => {
+              {
+                property: 'Model',
+                relation: {
+                  contains: modelSlug,
+                },
+              },
+            ],
+          }
+        }) */
+    const lastIndex = 0 /* response.reduce((max, page) => {
       const indexValue = page.properties?.Index?.number ?? 0
 
       return indexValue > max ? indexValue : max
-    }, 0)
+    }, 0) */
 
     await notion.pages.create({
       parent: {

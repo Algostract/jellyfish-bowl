@@ -6,7 +6,7 @@ const searchParams = ref<SearchParams>({
   queryBy: 'name',
   filterBy: '',
   sortBy: 'name:asc',
-  perPage: 10,
+  perPage: 20,
 })
 
 const { data: models } = await useFetch('/api/model', { query: searchParams })
