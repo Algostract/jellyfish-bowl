@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.10
+
+[compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.9...v0.0.10)
+
+### 🩹 Fixes
+
+- Enhance search functionality by adding status filter and updating model schema ([163f678](https://github.com/Algostract/jellyfish-bowl/commit/163f678))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.9
 
 [compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.8...v0.0.9)
