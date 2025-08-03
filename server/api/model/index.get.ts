@@ -3,13 +3,16 @@ export default defineEventHandler<Promise<Model[]>>(
     try {
       const searchParams = getQuery<SearchParams>(event)
 
-      const response = await typesense.collections<TypesenseModel>('model').documents().search({
-        q: searchParams.query,
-        query_by: searchParams.queryBy,
-        filter_by: searchParams.filterBy, // e.g. "isFeatured:=true"
-        sort_by: searchParams.sortBy,
-        per_page: searchParams.perPage,
-      })
+      const response = await typesense
+        .collections<TypesenseModel>('model')
+        .documents()
+        .search({
+          q: searchParams.query,
+          query_by: searchParams.queryBy,
+          filter_by: 'status:=Active,' + searchParams.filterBy, // e.g. "isFeatured:=true"
+          sort_by: searchParams.sortBy,
+          per_page: searchParams.perPage,
+        })
       // filter by status
 
       return (

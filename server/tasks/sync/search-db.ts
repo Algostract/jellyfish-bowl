@@ -56,7 +56,7 @@ export default defineTask({
         fields: [
           { name: 'id', type: 'string' },
           { name: 'name', type: 'string', sort: true },
-          { name: 'status', type: 'string', sort: true },
+          { name: 'status', type: 'string', sort: true, facet: true },
           { name: 'photo.title', type: 'string' },
           { name: 'photo.image', type: 'string' },
           { name: 'photo.description', type: 'string' },
