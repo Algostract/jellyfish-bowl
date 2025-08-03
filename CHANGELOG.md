@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.9
+
+[compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.8...v0.0.9)
+
+### 🩹 Fixes
+
+- Update pagination settings and clean up unused code in model API ([0479a14](https://github.com/Algostract/jellyfish-bowl/commit/0479a14))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.8
 
 [compare changes](https://github.com/Algostract/jellyfish-bowl/compare/v0.0.7...v0.0.8)
