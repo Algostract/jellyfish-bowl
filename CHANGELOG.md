@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.11
+
+[compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.0.10...v0.0.11)
+
+### 🚀 Enhancements
+
+- Implement search database reset and sync functionality ([cf3178d](https://github.com/Algostract/gold-fish-bowl/commit/cf3178d))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.0.10
 
 [compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.0.9...v0.0.10)
