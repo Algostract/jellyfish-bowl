@@ -33,7 +33,7 @@ const nativeConfig =
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-05-15',
   future: {
     compatibilityVersion: 4,
   },
@@ -49,7 +49,6 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils/module',
     '@nuxtjs/color-mode',
-    '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
@@ -70,7 +69,7 @@ export default defineNuxtConfig({
       tasks: true,
     },
     scheduledTasks: {
-      '*/5 * * * *': ['sync:search-db'],
+      '*/5 * * * *': ['search:sync'],
     },
   },
   routeRules: {

@@ -1,11 +1,11 @@
 version: '3.9'
 services:
   app:
-    image: ghcr.io/algostract/jellyfish-bowl:latest
+    image: ghcr.io/algostract/gold-fish-bowl:latest
     env_file:
       - .env.prod
     volumes:
-      - jellyfish_bowl_data:/app/.data
+      - gold_fish_bowl_data:/app/.data
     ports:
       - 4310:3000
     networks:
@@ -22,7 +22,7 @@ services:
     env_file:
       - .env.prod
     volumes:
-      - jellyfish_bowl_search-data:/data
+      - gold_fish_bowl_search-data:/data
     networks:
       - front-tier
     deploy:
@@ -32,9 +32,9 @@ services:
         max_attempts: 3
 
 volumes:
-  jellyfish_bowl_data:
+  gold_fish_bowl_data:
     external: true
-  jellyfish_bowl_search-data:
+  gold_fish_bowl_search-data:
     external: true
 
 networks:

@@ -1,9 +1,9 @@
 [package]
-name = "jellyfish-bowl"
+name = "gold-fish-bowl"
 description = "Locality‑focused, talent marketplace marketplace where models, makeup artist, designer etc can be found for commercial shoot"
 authors = ["Shirsendu Bairagi <shirsendu2001@gmail.com>"]
 license = "LGPL-3.0-or-later"
-repository = "https://github.com/Algostract/jellyfish-bowl.git"
+repository = "https://github.com/Algostract/gold-fish-bowl.git"
 edition = "2021"
 rust-version = "1.77.2"
 

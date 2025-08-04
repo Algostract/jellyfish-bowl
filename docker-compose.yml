@@ -1,4 +1,4 @@
-name: 'jellyfish-bowl-dev'
+name: 'gold-fish-bowl-dev'
 services:
   app:
     build: .

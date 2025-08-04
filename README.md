@@ -2,7 +2,7 @@
   <img src="./public/logo.png" lt="Logo" width="65" />
 <p>
 
-# Jellyfish Bowl
+# Gold Fish Bowl
 
 <p align="center">
   <a href="https://shirsendu-bairagi.betteruptime.com">
@@ -57,43 +57,43 @@ docker node ls
 
 ```bash
 docker volume create \
-  --name jellyfish-bowl_data \
+  --name gold-fish-bowl_data \
   --driver local \
   --opt type=none \
-  --opt device=~/Algostract/jellyfish-bowl/.data \
+  --opt device=~/Algostract/gold-fish-bowl/.data \
   --opt o=bind
 
 docker volume create \
-  --name jellyfish_bowl_search-data \
+  --name gold_fish_bowl_search-data \
   --driver local \
   --opt type=none \
-  --opt device=~/Algostract/jellyfish-bowl/.data \
+  --opt device=~/Algostract/gold-fish-bowl/.data \
   --opt o=bind
 ```
 
 5. Use Docker Stack to deploy multi-container application
 
 ```bash
-docker stack deploy --compose-file docker-compose.prod.yml jellyfish-bowl
+docker stack deploy --compose-file docker-compose.prod.yml gold-fish-bowl
 ```
 
 6. Scale service
 
 ```bash
-docker service scale jellyfish-bowl_app=2
+docker service scale gold-fish-bowl_app=2
 ```
 
 7. Verify
 
 ```bash
 docker service ls
-docker service ps jellyfish-bowl_app
+docker service ps gold-fish-bowl_app
 ```
 
 ## License
 
-Published under the [GNU GPLv3](https://github.com/Algostract/jellyfish-bowl/blob/main/LICENSE) license.
+Published under the [GNU GPLv3](https://github.com/Algostract/gold-fish-bowl/blob/main/LICENSE) license.
 <br><br>
-<a href="https://github.com/Algostract/jellyfish-bowl/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=Algostract/jellyfish-bowl" />
+<a href="https://github.com/Algostract/gold-fish-bowl/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=Algostract/gold-fish-bowl" />
 </a>
