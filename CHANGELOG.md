@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.11
+## v0.1.0
 
-[compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.0.10...v0.0.11)
+[compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.0.10...v0.1.0)
 
 ### 🚀 Enhancements
 
