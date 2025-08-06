@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.1
+
+[compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.1.0...v0.1.1)
+
+### 🚀 Enhancements
+
+- New model details added. model fee added ([46ebdbb](https://github.com/Algostract/gold-fish-bowl/commit/46ebdbb))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.1.0
 
 [compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.0.10...v0.1.0)
