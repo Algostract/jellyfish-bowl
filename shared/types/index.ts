@@ -11,12 +11,61 @@ export interface Photo {
 export interface Model {
   id: string
   name: string
+  fee: number
   photo: Pick<Photo, 'title' | 'description' | 'image' | 'aspectRatio'>
   rating: number
   reviewCount: number
   isFeatured?: boolean
   coordinate: [number, number]
   url: string
+}
+
+export interface DetailedModel extends Model {
+  details: {
+    personalInfo: {
+      gender: 'male' | 'female'
+      age: number
+    }
+    location: {
+      city: string
+      neighborhood: string
+    }
+    physicalAttributes: {
+      height: number
+      weight: number
+      bodyType: 'Ectomorph' | 'Mesomorph' | 'Endomorph'
+      skinTone: string
+      eyeColor: string
+      hairColor: string
+      shoeSize: number
+      bust: number
+      waist: number
+      hips: number
+      tattoos: string
+      armpitHair: 'None' | 'Trimmed' | 'Natural'
+    }
+    professionalBackground: {
+      profession: string
+      education: string
+      hasPassport: boolean
+      experienceYears: number
+    }
+    skillsInterests: {
+      languages: string[]
+      hobbies: string[]
+      comfortableTimings: boolean
+      travelOutstation: boolean
+      travelInternational: boolean
+    }
+    shootPreferences: {
+      preferredGenres: ('Acting' | 'PrintEditorial' | 'EthnicFashion' | 'WesternFashion' | 'RampRunway' | 'MusicVideos' | 'WebSeries' | 'Anchoring')[]
+      preferredWardrobe: ('EthnicWear' | 'WesternWear' | 'SwimSuits')[]
+      experiencedGenres: string[]
+    }
+    healthSafety: {
+      allergies: string
+    }
+  }
 }
 
 export interface SearchParams {
@@ -95,6 +144,23 @@ export interface NotionModel {
         name: 'Unverified' | 'Verified' | 'Active' | 'Inactive'
       }
     }
+    Fee: {
+      type: 'number'
+      number: number
+    }
+    DOB: {
+      date: {
+        start: string
+      }
+    }
+    Height: {
+      type: 'number'
+      number: number
+    }
+    Weight: {
+      type: 'number'
+      number: number
+    }
     Latitude: {
       type: 'number'
       number: number
@@ -111,7 +177,6 @@ export interface NotionModel {
       type: 'phone_number'
       phone_number: string
     }
-
     Instagram: {
       type: 'url'
       url: string

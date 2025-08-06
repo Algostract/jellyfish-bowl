@@ -1,6 +1,7 @@
 import { z } from 'zod'
+import { differenceInYears, parseISO } from 'date-fns'
 
-export default defineEventHandler<Promise<Model>>(
+export default defineEventHandler<Promise<DetailedModel>>(
   async (event) => {
     try {
       const { slug } = await getValidatedRouterParams(
@@ -32,7 +33,7 @@ export default defineEventHandler<Promise<Model>>(
 
       // const [aW, aH] = model.properties //.properties['Aspect ratio'].select.name.split(':').map((item) => parseInt(item))
 
-      /*       return {
+      /* return {
               id: slug,
               title: notionTextStringify(model.properties.Name.title),
               description: notionTextStringify(model.properties.Description.rich_text),
@@ -45,18 +46,65 @@ export default defineEventHandler<Promise<Model>>(
             } as PhotoDetails */
 
       const title = notionTextStringify(model.properties.Name.title)
+
       return {
         id: slug,
         name: title,
+        fee: model.properties.Fee.number,
         photo: {
           image: model.cover?.type === 'external' ? model.cover.external.url.split('/')[3] : undefined,
+        },
+        details: {
+          personalInfo: {
+            gender: 'female',
+            age: differenceInYears(new Date(), parseISO(model.properties.DOB.date.start)),
+          },
+          location: {
+            city: 'Dummy',
+            neighborhood: 'Dummy',
+          },
+          physicalAttributes: {
+            height: model.properties.Height.number,
+            weight: model.properties.Weight.number,
+            bodyType: 'Mesomorph',
+            skinTone: 'Wheatish',
+            eyeColor: 'Hazel',
+            hairColor: 'DarkBrown',
+            shoeSize: 7,
+            bust: 86,
+            waist: 64,
+            hips: 90,
+            tattoos: 'Small lotus on right wrist',
+            armpitHair: 'Trimmed',
+          },
+          professionalBackground: {
+            profession: 'FreelanceModel',
+            education: 'BachelorArts',
+            hasPassport: true,
+            experienceYears: 3,
+          },
+          skillsInterests: {
+            languages: ['Hindi', 'English', 'Bhojpuri'],
+            hobbies: ['Photography', 'Yoga', 'Travel'],
+            comfortableTimings: true,
+            travelOutstation: true,
+            travelInternational: false,
+          },
+          shootPreferences: {
+            preferredGenres: ['Acting', 'PrintEditorial', 'EthnicFashion', 'WesternFashion', 'RampRunway', 'MusicVideos', 'WebSeries', 'Anchoring'],
+            preferredWardrobe: ['EthnicWear', 'WesternWear', 'SwimSuits'],
+            experiencedGenres: ['Commercial', 'TV Serial', 'Short Film'],
+          },
+          healthSafety: {
+            allergies: 'None',
+          },
         },
         rating: 0,
         reviewCount: 0,
         coordinate: [model.properties.Longitude.number, model.properties.Latitude.number],
         isFeatured: false,
         url: `/model/${slug}`,
-      } as Model
+      } as DetailedModel
     } catch (error: unknown) {
       if (error instanceof Error && 'statusCode' in error) {
         throw error

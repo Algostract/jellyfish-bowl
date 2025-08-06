@@ -22,6 +22,7 @@ export async function syncSearchDb() {
         id: properties.Slug.formula.string,
         name: title,
         status: properties.Status.status.name,
+        fee: properties.Fee.number,
         'photo.title': title,
         'photo.image': cover?.type === 'external' ? cover.external.url.split('/')[3] : undefined,
         'photo.description': '',

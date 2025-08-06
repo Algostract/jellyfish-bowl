@@ -6,6 +6,7 @@ const {
   app: { buildTime },
   public: { siteUrl, vapidKey },
 } = useRuntimeConfig()
+const imageUrl = `${siteUrl}/previews/landing.webp`
 
 useHead({
   htmlAttrs: {
@@ -27,6 +28,8 @@ useSeoMeta({
   fbAppId: 966242223397117,
   twitterCard: 'summary_large_image',
   colorScheme: 'light dark',
+  ogImage: imageUrl,
+  twitterImage: imageUrl,
 })
 
 useSchemaOrg([
@@ -118,5 +121,9 @@ svg.iconify--local {
 .scrollbar-hidden::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+
+.glass-effect {
+  @apply border border-black/10 bg-black/10 backdrop-blur-[24px] before:pointer-events-none before:absolute before:inset-0 before:border before:border-black/20 before:content-[''];
 }
 </style>

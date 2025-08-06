@@ -14,6 +14,7 @@ export async function resetSearchDb() {
     fields: [
       { name: 'id', type: 'string' },
       { name: 'name', type: 'string', sort: true },
+      { name: 'fee', type: 'int32', sort: true },
       { name: 'status', type: 'string', sort: true, facet: true },
       { name: 'photo.title', type: 'string' },
       { name: 'photo.image', type: 'string' },
