@@ -74,6 +74,7 @@ export interface SearchParams {
   filterBy: string
   sortBy: string
   perPage: number
+  page: number
 }
 
 /* Server Only */
@@ -144,9 +145,10 @@ export interface NotionModel {
         name: 'Unverified' | 'Verified' | 'Active' | 'Inactive'
       }
     }
-    Fee: {
-      type: 'number'
-      number: number
+    Gender: {
+      select: {
+        name: 'Male' | 'Female' | 'Other'
+      }
     }
     DOB: {
       date: {
@@ -166,6 +168,10 @@ export interface NotionModel {
       number: number
     }
     Longitude: {
+      type: 'number'
+      number: number
+    }
+    Fee: {
       type: 'number'
       number: number
     }

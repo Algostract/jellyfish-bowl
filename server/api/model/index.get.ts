@@ -13,6 +13,7 @@ export default defineEventHandler<Promise<Model[]>>(async (event) => {
         filter_by: 'status:=Active,' + searchParams.filterBy, // e.g. "isFeatured:=true"
         sort_by: searchParams.sortBy,
         per_page: searchParams.perPage,
+        page: searchParams.page,
       })
     // filter by status
 

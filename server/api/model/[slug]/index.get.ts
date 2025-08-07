@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { differenceInYears, parseISO } from 'date-fns'
 
-export default defineEventHandler<Promise<DetailedModel>>(
+export default defineCachedEventHandler<Promise<DetailedModel>>(
   async (event) => {
     try {
       const { slug } = await getValidatedRouterParams(
@@ -56,48 +56,48 @@ export default defineEventHandler<Promise<DetailedModel>>(
         },
         details: {
           personalInfo: {
-            gender: 'female',
+            gender: model.properties.Gender.select.name.toLowerCase(),
             age: differenceInYears(new Date(), parseISO(model.properties.DOB.date.start)),
           },
-          location: {
-            city: 'Dummy',
-            neighborhood: 'Dummy',
-          },
+          /*           location: {
+                      city: 'Dummy',
+                      neighborhood: 'Dummy',
+                    }, */
           physicalAttributes: {
             height: model.properties.Height.number,
             weight: model.properties.Weight.number,
-            bodyType: 'Mesomorph',
-            skinTone: 'Wheatish',
-            eyeColor: 'Hazel',
-            hairColor: 'DarkBrown',
-            shoeSize: 7,
-            bust: 86,
-            waist: 64,
-            hips: 90,
-            tattoos: 'Small lotus on right wrist',
-            armpitHair: 'Trimmed',
+            /*             bodyType: 'Mesomorph',
+                        skinTone: 'Wheatish',
+                        eyeColor: 'Hazel',
+                        hairColor: 'DarkBrown',
+                        shoeSize: 7,
+                        bust: 86,
+                        waist: 64,
+                        hips: 90,
+                        tattoos: 'Small lotus on right wrist',
+                        armpitHair: 'Trimmed', */
           },
-          professionalBackground: {
-            profession: 'FreelanceModel',
-            education: 'BachelorArts',
-            hasPassport: true,
-            experienceYears: 3,
-          },
-          skillsInterests: {
-            languages: ['Hindi', 'English', 'Bhojpuri'],
-            hobbies: ['Photography', 'Yoga', 'Travel'],
-            comfortableTimings: true,
-            travelOutstation: true,
-            travelInternational: false,
-          },
-          shootPreferences: {
-            preferredGenres: ['Acting', 'PrintEditorial', 'EthnicFashion', 'WesternFashion', 'RampRunway', 'MusicVideos', 'WebSeries', 'Anchoring'],
-            preferredWardrobe: ['EthnicWear', 'WesternWear', 'SwimSuits'],
-            experiencedGenres: ['Commercial', 'TV Serial', 'Short Film'],
-          },
-          healthSafety: {
-            allergies: 'None',
-          },
+          /*           professionalBackground: {
+                      profession: 'FreelanceModel',
+                      education: 'BachelorArts',
+                      hasPassport: true,
+                      experienceYears: 3,
+                    }, */
+          /*           skillsInterests: {
+                      languages: ['Hindi', 'English', 'Bhojpuri'],
+                      hobbies: ['Photography', 'Yoga', 'Travel'],
+                      comfortableTimings: true,
+                      travelOutstation: true,
+                      travelInternational: false,
+                    }, */
+          /*           shootPreferences: {
+                      preferredGenres: ['Acting', 'PrintEditorial', 'EthnicFashion', 'WesternFashion', 'RampRunway', 'MusicVideos', 'WebSeries', 'Anchoring'],
+                      preferredWardrobe: ['EthnicWear', 'WesternWear', 'SwimSuits'],
+                      experiencedGenres: ['Commercial', 'TV Serial', 'Short Film'],
+                    }, */
+          /*           healthSafety: {
+                      allergies: 'None',
+                    }, */
         },
         rating: 0,
         reviewCount: 0,
@@ -117,6 +117,9 @@ export default defineEventHandler<Promise<DetailedModel>>(
         statusMessage: 'Some Unknown Error Found',
       })
     }
+  },
+  {
+    maxAge: 60,
+    swr: true,
   }
-  // { maxAge: 60 * 60 }
 )
