@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.1.2
+
+[compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.1.1...v0.1.2)
+
+### 🚀 Enhancements
+
+- Optimized routes, details overlay animation added, icons changed, color schema changed ([c77a377](https://github.com/Algostract/gold-fish-bowl/commit/c77a377))
+
+### ❤️ Contributors
+
+- Shba007 ([@shba007](https://github.com/shba007))
+
 ## v0.1.1
 
 [compare changes](https://github.com/Algostract/gold-fish-bowl/compare/v0.1.0...v0.1.1)
